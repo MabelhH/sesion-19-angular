@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from 'src/app/servicios/pokemon.service';
 import { ThisReceiver } from '@angular/compiler';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-mostar',
@@ -14,43 +15,19 @@ export class MostarComponent {
   enviar:string|null='';
   description:number=0;
 
-  constructor(private pokedex:PokemonService ,private router:ActivatedRoute ,private location:Location){}
+
+  constructor(private pokedex:PokemonService ,private router:ActivatedRoute ,private location:Location , ){}
   
-  ngOnInit():void{
-    this.getPokemons()
-    this.enviar=this.router.snapshot.paramMap.get('i'); 
+  ngOnInit(): void {
+    //this.datos.getAll().subscribe(datos =>console.log(datos));
+    this.enviar=this.router.snapshot.paramMap.get('id');
     if(this.enviar!=null){
-    this.description=parseInt(this.enviar);
-  }
-  }
-
-  getPokemons(){
-
-    let pokemonData;
-
-    for(let i = 1; i < 150; i++){
-
-      this.pokedex.getPokemon(String(i)).subscribe(
-        res => {
-          pokemonData = {
-            position: i,
-            image: res.sprites.front_default,
-            name: res.name
-          }
-          this.data.push(pokemonData)
-          console.log(res);
-        },
-        err => {
-  
-        }
-      )
-
+      this.pokedex.getPokemon(this.enviar).subscribe(res=>this.data.push(res))
     }
-    
+
   }
 
-
-  goback():void{
+    goback():void{
     this.location.back();
    }
 }

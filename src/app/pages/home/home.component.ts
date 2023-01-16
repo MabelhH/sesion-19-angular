@@ -1,6 +1,7 @@
 import { Component ,OnInit } from '@angular/core';
 import {PokemonService } from 'src/app/servicios/pokemon.service';
 import { Router } from '@angular/router';
+import { MostarComponent } from '../mostar/mostar.component';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   
-
   data:any[] = [];
   //datasource = new
   pokemons = [];
+  nombrebuscado:string='';
 
   constructor(private pokedex:PokemonService ,private router:Router){}
 
@@ -31,7 +32,8 @@ export class HomeComponent implements OnInit {
           pokemonData = {
             position: i,
             image: res.sprites.front_default,
-            name: res.name
+            name: res.name,
+            orden: res.order
           }
           this.data.push(pokemonData)
           console.log(res);
@@ -43,11 +45,16 @@ export class HomeComponent implements OnInit {
 
     }
     
+    
   }
+    
+  
 
   
-  mostrar(){
-    this.router.navigate(['/mostar'])
+  mostrar(id:string){
+    this.router.navigate(['/mostar',id ])
+
+    
   }
   
   }

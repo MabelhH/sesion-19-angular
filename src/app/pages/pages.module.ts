@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { MostarComponent } from './mostar/mostar.component';
 import { BreakrComponent } from './breakr/breakr.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
+import{FormsModule} from '@angular/forms'
 
 
 
@@ -17,7 +17,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [
     CommonModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    FormsModule
+
     
 
 

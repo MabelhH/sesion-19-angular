@@ -1,23 +1,30 @@
-<p>LISTA DE POKEMONES</p>
-<div class="cuadro">
+<h1>LISTA DE POKEMONES</h1>
+<div class="container">
    <div class="row">
-    <div class="col-11">
-    <input type="text" placeholder="ingresa un pokemon" class="form-control">
-    </div>
-    <div class="col-1">
-     <button  type="submit" class="btn btn-primary" (click)="mostrar()">buscar</button>
-    </div>
-   </div>
+      <div class="col-11">
+       <input type="text" placeholder="ingresa un numero" class="form-control" #enviar>
+       </div>
+       <div class="col-1">
+       <button  type="submit" class="btn btn-primary" (click)="mostrar(enviar.value)">buscar</button>
+       </div>
+   </div> 
+<div class="cuerpo">
+   
+   <div class="cuadro">
+       <div *ngFor="let dato of data" class="">
+           <h2>Pokemons</h2>
+           <img src="{{dato.image}}" alt=""  width="50%">
+           <br>
+           <p class="text-xl font-bold">{{dato.orden}}</p> 
+           <p class="text-xl font-bold">{{dato.name | uppercase}}</p> 
 
-   <div class="cuerpo">
-      <div *ngFor="let p of data" class="">
-         <h1>Pokemons</h1>
-         <img src="{{p.image}}" alt="" width="45%">
-         <br>
-         <h2 class="text-center">{{p.name}}</h2>
-      </div>
-    </div>
+       </div>
+   </div>
 </div>
+</div>
+
+
+
 
 
     

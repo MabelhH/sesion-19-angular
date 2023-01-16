@@ -6,7 +6,7 @@ import { MostarComponent } from './pages/mostar/mostar.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path:'mostar',component:MostarComponent},
+  {path:'mostar/:id',component:MostarComponent},
   {path:'404',component:BreakrComponent},
   {path:'**',redirectTo:'404',pathMatch:'full'}
 

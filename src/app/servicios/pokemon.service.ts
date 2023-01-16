@@ -7,16 +7,16 @@ import { HttpClient ,HttpHeaders } from '@angular/common/http';
 })
 export class PokemonService {
 
-    urlApi='https://pokeapi.co/api/v2';
+  urlBase="https://pokeapi.co/api/v2";
 
-    constructor(private http:HttpClient) { 
-      console.log('pokemon')
-    }
-  
-    getPokemon(index: string){
-      return this.http.get<any>(`${this.urlApi}/pokemon/${index}`);
-      
-    }
+  constructor(private http:HttpClient) { 
+    console.log('pokemon')
+  }
+
+
+  getPokemon(index: string){
+    return this.http.get<any>(`${this.urlBase}/pokemon/${index}`);
+  }  
   
 }
 
