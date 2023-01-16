@@ -1,9 +1,24 @@
-<p>home works!</p>
-<ul>
-    <li *ngFor="let datos of input">
-     <pre>
-        {{datos}}
-     </pre>
-    </li>
-</ul>
+<p>LISTA DE POKEMONES</p>
+<div class="cuadro">
+   <div class="row">
+    <div class="col-11">
+    <input type="text" placeholder="ingresa un pokemon" class="form-control">
+    </div>
+    <div class="col-1">
+     <button  type="submit" class="btn btn-primary" (click)="mostrar()">buscar</button>
+    </div>
+   </div>
+
+   <div class="cuerpo">
+      <div *ngFor="let p of data" class="">
+         <h1>Pokemons</h1>
+         <img src="{{p.image}}" alt="" width="45%">
+         <br>
+         <h2 class="text-center">{{p.name}}</h2>
+      </div>
+    </div>
+</div>
+
+
     
+   

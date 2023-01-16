@@ -1,6 +1,6 @@
 import { Component ,OnInit } from '@angular/core';
 import {PokemonService } from 'src/app/servicios/pokemon.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +9,46 @@ import {PokemonService } from 'src/app/servicios/pokemon.service';
 })
 export class HomeComponent implements OnInit {
   
-  input:any=[];
-  constructor(private datos:PokemonService){}
-  
-  ngOnInit(): void {
-    //this.datos.getPokemon().subscribe(datos =>console.log(datos));
-    this.datos.getPokemon().subscribe(datos=>this.input=datos);
 
+  data:any[] = [];
+  //datasource = new
+  pokemons = [];
+
+  constructor(private pokedex:PokemonService ,private router:Router){}
+
+  ngOnInit():void{
+    this.getPokemons()
   }
 
+  getPokemons(){
 
-}
+    let pokemonData;
+
+    for(let i = 1; i < 150; i++){
+
+      this.pokedex.getPokemon(String(i)).subscribe(
+        res => {
+          pokemonData = {
+            position: i,
+            image: res.sprites.front_default,
+            name: res.name
+          }
+          this.data.push(pokemonData)
+          console.log(res);
+        },
+        err => {
+  
+        }
+      )
+
+    }
+    
+  }
+
+  
+  mostrar(){
+    this.router.navigate(['/mostar'])
+  }
+  
+  }
+

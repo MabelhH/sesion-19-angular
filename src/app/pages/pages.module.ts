@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { MostarComponent } from './mostar/mostar.component';
 import { BreakrComponent } from './breakr/breakr.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 
 
@@ -15,6 +16,8 @@ import { BreakrComponent } from './breakr/breakr.component';
   ],
   imports: [
     CommonModule,
+    RouterLink,
+    RouterLinkActive
     
 
 
